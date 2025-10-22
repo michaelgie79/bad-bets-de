@@ -803,6 +803,113 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Bad Bets News Section */}
+      <section className="bg-gradient-to-br from-black/40 to-red-950/20 py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-600/20 backdrop-blur-sm rounded-full border border-red-500/30 font-semibold mb-4">
+              <AlertTriangle className="w-5 h-5 text-red-500" />
+              <span className="text-red-400">Warnungen & Analysen</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">🚫 Bad Bets News</h2>
+            <p className="text-xl text-gray-400">Lerne aus den Fehlern anderer</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Article 1: Bayern vs Brügge */}
+            <div className="bg-gradient-to-br from-black/60 to-red-950/30 rounded-2xl border border-red-900/30 shadow-xl p-6 hover:border-red-500/50 transition-all">
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-4xl">🚫</span>
+                <span className="px-3 py-1 bg-red-600/30 text-red-400 rounded-full text-xs font-bold">KRITISCH</span>
+              </div>
+              <h3 className="text-xl font-bold mb-3">Bayern vs Brügge: Warum du NICHT auf Quote 1.20 setzen solltest</h3>
+              <p className="text-gray-400 mb-4 text-sm">
+                100€ Einsatz für nur 20€ Gewinn? Das ist ein klassischer Bad Bet! Bei einer Niederlage brauchst du 5 Siege in Folge, um den Verlust auszugleichen. Bessere Alternative: HT1/FT1 zu Quote 1.68 oder Über 4.5 Tore zu 2.20.
+              </p>
+              <div className="bg-red-950/50 p-3 rounded-lg mb-4">
+                <div className="text-xs font-semibold text-red-400 mb-2">⚠️ RISIKO-ANALYSE:</div>
+                <div className="text-sm text-gray-300">• Risiko-Rendite-Verhältnis: KATASTROPHAL</div>
+                <div className="text-sm text-gray-300">• Expected Value: NEGATIV (-8%)</div>
+                <div className="text-sm text-gray-300">• Empfehlung: FINGER WEG!</div>
+              </div>
+              <div className="flex items-center justify-between text-xs text-gray-500 mb-4">
+                <span>📅 22. Oktober 2025</span>
+                <span>⏱️ 3 Min.</span>
+              </div>
+              <a href="https://nur-sportwetten.de" className="block w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-4 rounded-lg transition-all text-center">
+                Bessere Alternativen →
+              </a>
+            </div>
+
+            {/* Article 2: Champions League */}
+            <div className="bg-gradient-to-br from-black/60 to-orange-950/30 rounded-2xl border border-orange-900/30 shadow-xl p-6 hover:border-orange-500/50 transition-all">
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-4xl">⚠️</span>
+                <span className="px-3 py-1 bg-orange-600/30 text-orange-400 rounded-full text-xs font-bold">WARNUNG</span>
+              </div>
+              <h3 className="text-xl font-bold mb-3">Champions League heute: Diese 4 Wetten solltest du vermeiden</h3>
+              <p className="text-gray-400 mb-4 text-sm">
+                Heute spielen 4 deutsche Teams in der Champions League. Wir zeigen dir, welche Wetten Bad Bets sind: Favoriten-Wetten mit Mini-Quoten, überbewertete Kombiwetten und Anbieter mit schlechten Quoten. Vergleiche immer die Quoten!
+              </p>
+              <div className="bg-orange-950/50 p-3 rounded-lg mb-4">
+                <div className="text-xs font-semibold text-orange-400 mb-2">🚫 TOP BAD BETS:</div>
+                <div className="text-sm text-gray-300">• Bayern 1.20: Zu geringes Risiko-Rendite</div>
+                <div className="text-sm text-gray-300">• Frankfurt Sieg: Überschätzte Chance</div>
+                <div className="text-sm text-gray-300">• 4er-Kombi: Zu hohes Risiko</div>
+              </div>
+              <div className="flex items-center justify-between text-xs text-gray-500 mb-4">
+                <span>📅 22. Oktober 2025</span>
+                <span>⏱️ 4 Min.</span>
+              </div>
+              <a href="https://sportwett-vergleich.de" className="block w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold py-3 px-4 rounded-lg transition-all text-center">
+                Quoten vergleichen →
+              </a>
+            </div>
+
+            {/* Article 3: Arsenal */}
+            <div className="bg-gradient-to-br from-black/60 to-yellow-950/30 rounded-2xl border border-yellow-900/30 shadow-xl p-6 hover:border-yellow-500/50 transition-all">
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-4xl">💸</span>
+                <span className="px-3 py-1 bg-yellow-600/30 text-yellow-400 rounded-full text-xs font-bold">VERLUST</span>
+              </div>
+              <h3 className="text-xl font-bold mb-3">Arsenal 4:0 - Wer auf Atlético gesetzt hat, verlor alles</h3>
+              <p className="text-gray-400 mb-4 text-sm">
+                Gestern setzten viele auf Atlético Madrid oder "Beide Teams treffen" (Quote 1.70). Beide Wetten gingen nicht auf. Arsenal dominierte mit 4:0. Das ist ein klassisches Beispiel für überschätzte Außenseiter-Chancen und falsche Annahmen.
+              </p>
+              <div className="bg-yellow-950/50 p-3 rounded-lg mb-4">
+                <div className="text-xs font-semibold text-yellow-400 mb-2">💰 VERLUST-ANALYSE:</div>
+                <div className="text-sm text-gray-300">• Atlético Sieg (Quote 4.5): -100%</div>
+                <div className="text-sm text-gray-300">• Beide treffen (1.70): -100%</div>
+                <div className="text-sm text-gray-300">• Unentschieden (3.8): -100%</div>
+              </div>
+              <div className="flex items-center justify-between text-xs text-gray-500 mb-4">
+                <span>📅 22. Oktober 2025</span>
+                <span>⏱️ 3 Min.</span>
+              </div>
+              <a href="https://nur-sportwetten.de" className="block w-full bg-yellow-600 hover:bg-yellow-700 text-white font-semibold py-3 px-4 rounded-lg transition-all text-center">
+                Aus Fehlern lernen →
+              </a>
+            </div>
+          </div>
+
+          {/* CTA */}
+          <div className="mt-12 bg-gradient-to-r from-red-900/40 to-orange-900/40 rounded-2xl p-8 text-center border border-red-500/30">
+            <h3 className="text-2xl font-bold mb-4">🛡️ Schütze dein Geld vor Bad Bets!</h3>
+            <p className="text-lg text-gray-300 mb-6">
+              Vermeide die häufigsten Wett-Fehler und finde bessere Alternativen. Täglich aktualisiert.
+            </p>
+            <div className="flex gap-4 justify-center flex-wrap">
+              <a href="https://nur-sportwetten.de" className="inline-block bg-white text-red-600 font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition-all">
+                Zu den Wett-Tipps →
+              </a>
+              <a href="https://sportwett-vergleich.de" className="inline-block bg-red-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-red-700 transition-all">
+                Quoten vergleichen →
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="bg-black/60 border-t border-red-900/30 py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
