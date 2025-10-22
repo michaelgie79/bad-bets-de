@@ -827,6 +827,25 @@ export default function Home() {
               </ul>
             </div>
             <div>
+              <h4 className="font-semibold mb-4 text-red-400">Partner-Portale</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li>
+                  <a href="https://nur-sportwetten.de" className="hover:text-white transition flex items-center">
+                    <span className="mr-2">📰</span>
+                    nur-sportwetten.de
+                  </a>
+                  <p className="text-xs text-gray-500 ml-6">News, Tipps & Analysen</p>
+                </li>
+                <li>
+                  <a href="https://sportwett-vergleich.de" className="hover:text-white transition flex items-center">
+                    <span className="mr-2">🔍</span>
+                    sportwett-vergleich.de
+                  </a>
+                  <p className="text-xs text-gray-500 ml-6">Anbieter-Vergleich</p>
+                </li>
+              </ul>
+            </div>
+            <div>
               <h4 className="font-semibold mb-4">Tools</h4>
               <ul className="space-y-2 text-gray-400">
                 <li><a href="#" className="hover:text-white transition">EV Calculator</a></li>
@@ -852,8 +871,9 @@ export default function Home() {
               <a href="#" className="text-red-400 hover:underline ml-1">Mehr Infos</a>
             </p>
             <p className="mb-4 text-sm">
-              <a href="https://wett-kompass.de" className="text-red-400 hover:underline">Wett-Kompass.de</a> | 
-              <a href="https://nur-sportwetten.de" className="text-red-400 hover:underline ml-2">nur-sportwetten.de</a>
+              <span className="text-gray-500">Unsere Partner:</span>
+              <a href="https://nur-sportwetten.de" className="text-red-400 hover:underline ml-2">nur-sportwetten.de</a> | 
+              <a href="https://sportwett-vergleich.de" className="text-red-400 hover:underline ml-2">sportwett-vergleich.de</a>
             </p>
             <p>
               © 2025 Bad-Bets.de - Alle Rechte vorbehalten
