@@ -442,13 +442,13 @@ export default function Home() {
       {/* Header */}
       <header className="bg-black/40 backdrop-blur-md shadow-lg sticky top-0 z-50 border-b border-red-900/30">
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
+          <div className="flex justify-between items-center h-24 py-2">
             {/* Logo */}
             <div className="flex items-center space-x-3 group cursor-pointer">
               <img 
                 src="/logo.png" 
                 alt="Bad Bets Logo" 
-                className="w-36 h-36 group-hover:scale-110 transition-all duration-300 filter drop-shadow-[0_0_25px_rgba(239,68,68,0.6)] group-hover:drop-shadow-[0_0_35px_rgba(239,68,68,0.8)] group-hover:brightness-110"
+                className="w-20 h-20 group-hover:scale-110 transition-all duration-300 filter drop-shadow-[0_0_25px_rgba(239,68,68,0.6)] group-hover:drop-shadow-[0_0_35px_rgba(239,68,68,0.8)] group-hover:brightness-110"
               />
               <div>
                 <span className="text-2xl font-bold bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 bg-clip-text text-transparent">
