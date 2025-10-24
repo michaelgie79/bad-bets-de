@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'wouter'
 import { Button } from "@/components/ui/button"
 import { AlertTriangle, TrendingDown, Shield, Calculator, BookOpen, ChevronRight, X, Ban, DollarSign, BarChart3, Clock, Flame, Eye, Star, ArrowDown, ArrowUp, Filter } from 'lucide-react'
+import { getAffiliateLink } from '@/config/affiliate'
 
 // Type definitions for data structure
 interface BadBetReason {
@@ -423,10 +425,12 @@ export default function Home() {
       </div>
 
       {/* CTA */}
-      <Button className="w-full mt-4 bg-gradient-to-r from-red-600 to-red-800 hover:from-red-700 hover:to-red-900 group-hover:scale-105 transition-all">
-        Details ansehen
-        <ChevronRight className="ml-2 w-4 h-4" />
-      </Button>
+      <Link href={`/bad-bets/${badBet.id}`}>
+        <Button className="w-full mt-4 bg-gradient-to-r from-red-600 to-red-800 hover:from-red-700 hover:to-red-900 group-hover:scale-105 transition-all">
+          Details ansehen
+          <ChevronRight className="ml-2 w-4 h-4" />
+        </Button>
+      </Link>
     </div>
   )
 
