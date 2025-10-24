@@ -436,7 +436,7 @@ export default function Home() {
   )
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-red-950 to-slate-900 text-white overflow-x-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-red-950 to-slate-900 text-white overflow-x-hidden relative">
       {/* Animated Background Elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none opacity-20">
         <div className="absolute top-20 left-10 w-96 h-96 bg-red-600 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
@@ -445,7 +445,7 @@ export default function Home() {
       </div>
 
       {/* Header */}
-      <header className="bg-black/95 backdrop-blur-md shadow-2xl sticky top-0 z-[9999] border-b border-red-900/50 transition-all duration-300">
+      <header className="bg-black/40 backdrop-blur-md shadow-lg sticky top-0 z-[9999] border-b border-red-900/30 transition-all duration-300">
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-24 py-2">
             {/* Logo */}
