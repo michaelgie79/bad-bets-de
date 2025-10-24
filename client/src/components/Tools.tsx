@@ -30,6 +30,17 @@ export default function Tools() {
   // Odds Comparison State
   const [comparisonBet, setComparisonBet] = useState<string>('Bayern gewinnt')
 
+  // 2-Way Odds Calculator State
+  const [twoWayOdds1, setTwoWayOdds1] = useState<string>('')
+  const [twoWayOdds2, setTwoWayOdds2] = useState<string>('')
+  const [twoWayResult, setTwoWayResult] = useState<any>(null)
+
+  // 3-Way Odds Calculator State
+  const [threeWayOdds1, setThreeWayOdds1] = useState<string>('')
+  const [threeWayOddsX, setThreeWayOddsX] = useState<string>('')
+  const [threeWayOdds2, setThreeWayOdds2] = useState<string>('')
+  const [threeWayResult, setThreeWayResult] = useState<any>(null)
+
   const calculateBadBet = () => {
     const o = parseFloat(odds)
     const s = parseFloat(stake)
@@ -163,11 +174,100 @@ export default function Tools() {
     })
   }
 
+  const calculate2WayOdds = () => {
+    const o1 = parseFloat(twoWayOdds1)
+    const o2 = parseFloat(twoWayOdds2)
+    
+    if (isNaN(o1) || isNaN(o2)) return
+
+    const prob1 = (1 / o1) * 100
+    const prob2 = (1 / o2) * 100
+    const totalProb = prob1 + prob2
+    const margin = totalProb - 100
+    
+    const fairProb1 = (prob1 / totalProb) * 100
+    const fairProb2 = (prob2 / totalProb) * 100
+    const fairOdds1 = 100 / fairProb1
+    const fairOdds2 = 100 / fairProb2
+    
+    let message = ''
+    if (margin > 10) {
+      message = '🚫 SEHR HOHE MARGE! Finger weg!'
+    } else if (margin > 5) {
+      message = '⚠️ HOHE MARGE! Vorsicht!'
+    } else if (margin > 2) {
+      message = '⚡ NORMALE MARGE'
+    } else {
+      message = '✅ NIEDRIGE MARGE! Gute Quoten!'
+    }
+
+    setTwoWayResult({
+      prob1: prob1.toFixed(2),
+      prob2: prob2.toFixed(2),
+      totalProb: totalProb.toFixed(2),
+      margin: margin.toFixed(2),
+      fairProb1: fairProb1.toFixed(2),
+      fairProb2: fairProb2.toFixed(2),
+      fairOdds1: fairOdds1.toFixed(2),
+      fairOdds2: fairOdds2.toFixed(2),
+      message
+    })
+  }
+
+  const calculate3WayOdds = () => {
+    const o1 = parseFloat(threeWayOdds1)
+    const oX = parseFloat(threeWayOddsX)
+    const o2 = parseFloat(threeWayOdds2)
+    
+    if (isNaN(o1) || isNaN(oX) || isNaN(o2)) return
+
+    const prob1 = (1 / o1) * 100
+    const probX = (1 / oX) * 100
+    const prob2 = (1 / o2) * 100
+    const totalProb = prob1 + probX + prob2
+    const margin = totalProb - 100
+    
+    const fairProb1 = (prob1 / totalProb) * 100
+    const fairProbX = (probX / totalProb) * 100
+    const fairProb2 = (prob2 / totalProb) * 100
+    const fairOdds1 = 100 / fairProb1
+    const fairOddsX = 100 / fairProbX
+    const fairOdds2 = 100 / fairProb2
+    
+    let message = ''
+    if (margin > 10) {
+      message = '🚫 SEHR HOHE MARGE! Finger weg!'
+    } else if (margin > 5) {
+      message = '⚠️ HOHE MARGE! Vorsicht!'
+    } else if (margin > 2) {
+      message = '⚡ NORMALE MARGE'
+    } else {
+      message = '✅ NIEDRIGE MARGE! Gute Quoten!'
+    }
+
+    setThreeWayResult({
+      prob1: prob1.toFixed(2),
+      probX: probX.toFixed(2),
+      prob2: prob2.toFixed(2),
+      totalProb: totalProb.toFixed(2),
+      margin: margin.toFixed(2),
+      fairProb1: fairProb1.toFixed(2),
+      fairProbX: fairProbX.toFixed(2),
+      fairProb2: fairProb2.toFixed(2),
+      fairOdds1: fairOdds1.toFixed(2),
+      fairOddsX: fairOddsX.toFixed(2),
+      fairOdds2: fairOdds2.toFixed(2),
+      message
+    })
+  }
+
   const tools = [
     { id: 'bad-bet-checker', name: 'Bad-Bet-Checker', icon: AlertTriangle },
     { id: 'value-calculator', name: 'Value-Rechner', icon: TrendingUp },
     { id: 'bankroll-manager', name: 'Bankroll-Manager', icon: DollarSign },
     { id: 'arbitrage-calculator', name: 'Arbitrage-Rechner', icon: BarChart3 },
+    { id: '2-way-odds', name: 'Quotenschlüssel 2-Weg', icon: Calculator },
+    { id: '3-way-odds', name: 'Quotenschlüssel 3-Weg', icon: Calculator },
     { id: 'odds-comparison', name: 'Quoten-Vergleich', icon: Calculator },
   ]
 
@@ -492,6 +592,204 @@ export default function Tools() {
                       </div>
                     </div>
                   )}
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* 2-Way Odds Calculator */}
+          {activeTool === '2-way-odds' && (
+            <div>
+              <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                <Calculator className="w-7 h-7 text-cyan-500" />
+                Quotenschlüssel-Rechner (2-Weg-Wetten)
+              </h3>
+              <p className="text-gray-400 mb-6">Berechne Wahrscheinlichkeiten und Buchmacher-Marge bei 2-Weg-Wetten (z.B. Über/Unter, Handicap)!</p>
+              
+              <div className="grid md:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <label className="block text-sm font-semibold mb-2">Quote Ausgang 1 (z.B. Über 2.5)</label>
+                  <input
+                    type="number"
+                    step="0.01"
+                    value={twoWayOdds1}
+                    onChange={(e) => setTwoWayOdds1(e.target.value)}
+                    className="w-full bg-black/40 border border-red-900/30 rounded-lg px-4 py-3 text-white focus:border-red-500 focus:outline-none"
+                    placeholder="z.B. 1.85"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold mb-2">Quote Ausgang 2 (z.B. Unter 2.5)</label>
+                  <input
+                    type="number"
+                    step="0.01"
+                    value={twoWayOdds2}
+                    onChange={(e) => setTwoWayOdds2(e.target.value)}
+                    className="w-full bg-black/40 border border-red-900/30 rounded-lg px-4 py-3 text-white focus:border-red-500 focus:outline-none"
+                    placeholder="z.B. 2.05"
+                  />
+                </div>
+              </div>
+
+              <Button
+                onClick={calculate2WayOdds}
+                className="w-full bg-gradient-to-r from-cyan-600 to-cyan-800 hover:from-cyan-700 hover:to-cyan-900 text-lg py-6"
+              >
+                <Calculator className="w-5 h-5 mr-2" />
+                Quotenschlüssel berechnen
+              </Button>
+
+              {twoWayResult && (
+                <div className="mt-6 p-6 rounded-xl border-2 bg-cyan-950/50 border-cyan-500">
+                  <div className="text-2xl font-bold mb-6">{twoWayResult.message}</div>
+                  
+                  <div className="mb-6">
+                    <h4 className="text-lg font-bold mb-3">Implizierte Wahrscheinlichkeiten</h4>
+                    <div className="grid md:grid-cols-3 gap-4">
+                      <div>
+                        <div className="text-sm text-gray-400">Ausgang 1</div>
+                        <div className="text-2xl font-bold">{twoWayResult.prob1}%</div>
+                      </div>
+                      <div>
+                        <div className="text-sm text-gray-400">Ausgang 2</div>
+                        <div className="text-2xl font-bold">{twoWayResult.prob2}%</div>
+                      </div>
+                      <div>
+                        <div className="text-sm text-gray-400">Gesamt</div>
+                        <div className="text-2xl font-bold">{twoWayResult.totalProb}%</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="mb-6 p-4 bg-red-950/50 rounded-lg">
+                    <div className="text-sm text-gray-400 mb-1">Buchmacher-Marge</div>
+                    <div className="text-3xl font-bold text-red-400">{twoWayResult.margin}%</div>
+                  </div>
+
+                  <div>
+                    <h4 className="text-lg font-bold mb-3">Faire Wahrscheinlichkeiten (ohne Marge)</h4>
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div className="p-4 bg-black/40 rounded-lg">
+                        <div className="text-sm text-gray-400 mb-2">Ausgang 1</div>
+                        <div className="text-lg font-bold">{twoWayResult.fairProb1}%</div>
+                        <div className="text-sm text-cyan-400 mt-1">Faire Quote: {twoWayResult.fairOdds1}</div>
+                      </div>
+                      <div className="p-4 bg-black/40 rounded-lg">
+                        <div className="text-sm text-gray-400 mb-2">Ausgang 2</div>
+                        <div className="text-lg font-bold">{twoWayResult.fairProb2}%</div>
+                        <div className="text-sm text-cyan-400 mt-1">Faire Quote: {twoWayResult.fairOdds2}</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* 3-Way Odds Calculator */}
+          {activeTool === '3-way-odds' && (
+            <div>
+              <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                <Calculator className="w-7 h-7 text-teal-500" />
+                Quotenschlüssel-Rechner (3-Weg-Wetten)
+              </h3>
+              <p className="text-gray-400 mb-6">Berechne Wahrscheinlichkeiten und Buchmacher-Marge bei 3-Weg-Wetten (z.B. 1X2)!</p>
+              
+              <div className="grid md:grid-cols-3 gap-6 mb-6">
+                <div>
+                  <label className="block text-sm font-semibold mb-2">Quote Heimsieg (1)</label>
+                  <input
+                    type="number"
+                    step="0.01"
+                    value={threeWayOdds1}
+                    onChange={(e) => setThreeWayOdds1(e.target.value)}
+                    className="w-full bg-black/40 border border-red-900/30 rounded-lg px-4 py-3 text-white focus:border-red-500 focus:outline-none"
+                    placeholder="z.B. 2.10"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold mb-2">Quote Unentschieden (X)</label>
+                  <input
+                    type="number"
+                    step="0.01"
+                    value={threeWayOddsX}
+                    onChange={(e) => setThreeWayOddsX(e.target.value)}
+                    className="w-full bg-black/40 border border-red-900/30 rounded-lg px-4 py-3 text-white focus:border-red-500 focus:outline-none"
+                    placeholder="z.B. 3.40"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold mb-2">Quote Auswärtssieg (2)</label>
+                  <input
+                    type="number"
+                    step="0.01"
+                    value={threeWayOdds2}
+                    onChange={(e) => setThreeWayOdds2(e.target.value)}
+                    className="w-full bg-black/40 border border-red-900/30 rounded-lg px-4 py-3 text-white focus:border-red-500 focus:outline-none"
+                    placeholder="z.B. 3.80"
+                  />
+                </div>
+              </div>
+
+              <Button
+                onClick={calculate3WayOdds}
+                className="w-full bg-gradient-to-r from-teal-600 to-teal-800 hover:from-teal-700 hover:to-teal-900 text-lg py-6"
+              >
+                <Calculator className="w-5 h-5 mr-2" />
+                Quotenschlüssel berechnen
+              </Button>
+
+              {threeWayResult && (
+                <div className="mt-6 p-6 rounded-xl border-2 bg-teal-950/50 border-teal-500">
+                  <div className="text-2xl font-bold mb-6">{threeWayResult.message}</div>
+                  
+                  <div className="mb-6">
+                    <h4 className="text-lg font-bold mb-3">Implizierte Wahrscheinlichkeiten</h4>
+                    <div className="grid md:grid-cols-4 gap-4">
+                      <div>
+                        <div className="text-sm text-gray-400">Heimsieg</div>
+                        <div className="text-2xl font-bold">{threeWayResult.prob1}%</div>
+                      </div>
+                      <div>
+                        <div className="text-sm text-gray-400">Unentschieden</div>
+                        <div className="text-2xl font-bold">{threeWayResult.probX}%</div>
+                      </div>
+                      <div>
+                        <div className="text-sm text-gray-400">Auswärtssieg</div>
+                        <div className="text-2xl font-bold">{threeWayResult.prob2}%</div>
+                      </div>
+                      <div>
+                        <div className="text-sm text-gray-400">Gesamt</div>
+                        <div className="text-2xl font-bold">{threeWayResult.totalProb}%</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="mb-6 p-4 bg-red-950/50 rounded-lg">
+                    <div className="text-sm text-gray-400 mb-1">Buchmacher-Marge</div>
+                    <div className="text-3xl font-bold text-red-400">{threeWayResult.margin}%</div>
+                  </div>
+
+                  <div>
+                    <h4 className="text-lg font-bold mb-3">Faire Wahrscheinlichkeiten (ohne Marge)</h4>
+                    <div className="grid md:grid-cols-3 gap-4">
+                      <div className="p-4 bg-black/40 rounded-lg">
+                        <div className="text-sm text-gray-400 mb-2">Heimsieg</div>
+                        <div className="text-lg font-bold">{threeWayResult.fairProb1}%</div>
+                        <div className="text-sm text-teal-400 mt-1">Faire Quote: {threeWayResult.fairOdds1}</div>
+                      </div>
+                      <div className="p-4 bg-black/40 rounded-lg">
+                        <div className="text-sm text-gray-400 mb-2">Unentschieden</div>
+                        <div className="text-lg font-bold">{threeWayResult.fairProbX}%</div>
+                        <div className="text-sm text-teal-400 mt-1">Faire Quote: {threeWayResult.fairOddsX}</div>
+                      </div>
+                      <div className="p-4 bg-black/40 rounded-lg">
+                        <div className="text-sm text-gray-400 mb-2">Auswärtssieg</div>
+                        <div className="text-lg font-bold">{threeWayResult.fairProb2}%</div>
+                        <div className="text-sm text-teal-400 mt-1">Faire Quote: {threeWayResult.fairOdds2}</div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               )}
             </div>
