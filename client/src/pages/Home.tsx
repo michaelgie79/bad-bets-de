@@ -3,6 +3,7 @@ import { Link } from 'wouter'
 import { Button } from "@/components/ui/button"
 import { AlertTriangle, TrendingDown, Shield, Calculator, BookOpen, ChevronRight, X, Ban, DollarSign, BarChart3, Clock, Flame, Eye, Star, ArrowDown, ArrowUp, Filter } from 'lucide-react'
 import { getAffiliateLink } from '@/config/affiliate'
+import Tools from '@/components/Tools'
 
 // Type definitions for data structure
 interface BadBetReason {
@@ -480,7 +481,7 @@ export default function Home() {
                 Tools
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-500 group-hover:w-full transition-all duration-300"></span>
               </a>
-              <Button className="bg-gradient-to-r from-red-600 to-red-800 hover:from-red-700 hover:to-red-900 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+              <Button className="bg-gradient-to-r from-red-600 to-red-800 hover:from-red-700 hover:to-red-900 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300" onClick={() => window.location.href = 'mailto:michael.gierke@web.de?subject=Bad Bets Alert abonnieren&body=Ich möchte über Bad Bets informiert werden.'}>
                 <AlertTriangle className="w-4 h-4 mr-2" />
                 Jetzt warnen lassen
               </Button>
@@ -521,7 +522,7 @@ export default function Home() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-fade-in-up animation-delay-400">
-            <Button size="lg" className="bg-gradient-to-r from-red-600 to-red-800 hover:from-red-700 hover:to-red-900 text-lg px-8 shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 group">
+            <Button size="lg" className="bg-gradient-to-r from-red-600 to-red-800 hover:from-red-700 hover:to-red-900 text-lg px-8 shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 group" onClick={() => document.getElementById('bad-bets')?.scrollIntoView({ behavior: 'smooth' })}>
               <AlertTriangle className="mr-2 w-5 h-5 group-hover:animate-pulse" />
               Bad Bets des Tages
               <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -582,7 +583,7 @@ export default function Home() {
       </section>
 
       {/* Bad Bets of the Day Section - FLEXIBLE LAYOUT */}
-      <section id="bad-bet" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <section id="bad-bets" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-600/20 backdrop-blur-sm rounded-full border border-red-500/30 font-semibold mb-4">
             <Flame className="w-5 h-5 text-red-500" />
@@ -798,7 +799,7 @@ export default function Home() {
             Lass dich täglich warnen vor schlechten Wetten und schlechten Quoten. Kostenlos, unabhängig und auf deiner Seite.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-gradient-to-r from-red-600 to-red-800 hover:from-red-700 hover:to-red-900 text-lg px-8 shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
+            <Button size="lg" className="bg-gradient-to-r from-red-600 to-red-800 hover:from-red-700 hover:to-red-900 text-lg px-8 shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300" onClick={() => window.location.href = 'mailto:michael.gierke@web.de?subject=Bad Bets Alert abonnieren&body=Ich möchte über Bad Bets informiert werden.'}>
               <AlertTriangle className="mr-2 w-5 h-5" />
               Jetzt warnen lassen
             </Button>
@@ -915,6 +916,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Tools Section */}
+      <Tools />
 
       {/* Footer */}
       <footer className="bg-black/60 border-t border-red-900/30 py-12">
