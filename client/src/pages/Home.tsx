@@ -445,7 +445,7 @@ export default function Home() {
       </div>
 
       {/* Header */}
-      <header className="bg-black/40 backdrop-blur-md shadow-lg sticky top-0 z-[9999] border-b border-red-900/30 transition-all duration-300">
+      <header className="bg-gradient-to-r from-red-950/30 via-black/40 to-red-950/30 backdrop-blur-md shadow-lg sticky top-0 z-[9999] border-b border-red-900/30 transition-all duration-300">
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-24 py-2">
             {/* Logo */}
