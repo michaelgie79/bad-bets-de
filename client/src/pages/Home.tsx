@@ -527,7 +527,7 @@ export default function Home() {
               Bad Bets des Tages
               <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <Button size="lg" variant="outline" className="text-lg px-8 border-2 border-red-500 text-red-400 hover:bg-red-900/30 hover:scale-105 transition-all duration-300">
+            <Button size="lg" variant="outline" className="text-lg px-8 border-2 border-red-500 text-red-400 hover:bg-red-900/30 hover:scale-105 transition-all duration-300" onClick={() => document.getElementById('worst-odds')?.scrollIntoView({ behavior: 'smooth' })}>
               <TrendingDown className="mr-2 w-5 h-5" />
               Worst Odds ansehen
             </Button>
