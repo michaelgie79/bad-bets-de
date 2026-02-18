@@ -483,19 +483,19 @@ export default function Home() {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
-              <a href="#bad-bets" className="text-gray-300 hover:text-red-500 font-medium transition relative group">
+              <a onClick={() => document.getElementById('bad-bets')?.scrollIntoView({ behavior: 'smooth' })} className="text-gray-300 hover:text-red-500 font-medium transition relative group cursor-pointer">
                 Bad Bets des Tages
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-500 group-hover:w-full transition-all duration-300"></span>
               </a>
-              <a href="#worst-odds" className="text-gray-300 hover:text-red-500 font-medium transition relative group">
+              <a onClick={() => document.getElementById('worst-odds')?.scrollIntoView({ behavior: 'smooth' })} className="text-gray-300 hover:text-red-500 font-medium transition relative group cursor-pointer">
                 Worst Odds
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-500 group-hover:w-full transition-all duration-300"></span>
               </a>
-              <a href="#wettwissen" className="text-gray-300 hover:text-red-500 font-medium transition relative group">
+              <a onClick={() => document.getElementById('wettwissen')?.scrollIntoView({ behavior: 'smooth' })} className="text-gray-300 hover:text-red-500 font-medium transition relative group cursor-pointer">
                 Wettwissen
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-500 group-hover:w-full transition-all duration-300"></span>
               </a>
-              <a href="#tools" className="text-gray-300 hover:text-red-500 font-medium transition relative group">
+              <a onClick={() => document.getElementById('tools')?.scrollIntoView({ behavior: 'smooth' })} className="text-gray-300 hover:text-red-500 font-medium transition relative group cursor-pointer">
                 Tools
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-500 group-hover:w-full transition-all duration-300"></span>
               </a>
