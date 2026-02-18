@@ -483,25 +483,49 @@ export default function Home() {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
-              <a onClick={() => document.getElementById('bad-bets')?.scrollIntoView({ behavior: 'smooth' })} className="text-gray-300 hover:text-red-500 font-medium transition relative group cursor-pointer">
+              <button 
+                onClick={() => {
+                  const element = document.getElementById('bad-bets');
+                  if (element) element.scrollIntoView({ behavior: 'smooth' });
+                }} 
+                className="text-gray-300 hover:text-red-500 font-medium transition relative group cursor-pointer bg-transparent border-0"
+              >
                 Bad Bets des Tages
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-500 group-hover:w-full transition-all duration-300"></span>
-              </a>
-              <a onClick={() => document.getElementById('worst-odds')?.scrollIntoView({ behavior: 'smooth' })} className="text-gray-300 hover:text-red-500 font-medium transition relative group cursor-pointer">
+              </button>
+              <button 
+                onClick={() => {
+                  const element = document.getElementById('worst-odds');
+                  if (element) element.scrollIntoView({ behavior: 'smooth' });
+                }} 
+                className="text-gray-300 hover:text-red-500 font-medium transition relative group cursor-pointer bg-transparent border-0"
+              >
                 Worst Odds
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-500 group-hover:w-full transition-all duration-300"></span>
-              </a>
-              <a onClick={() => document.getElementById('wettwissen')?.scrollIntoView({ behavior: 'smooth' })} className="text-gray-300 hover:text-red-500 font-medium transition relative group cursor-pointer">
+              </button>
+              <button 
+                onClick={() => {
+                  const element = document.getElementById('wettwissen');
+                  if (element) element.scrollIntoView({ behavior: 'smooth' });
+                }} 
+                className="text-gray-300 hover:text-red-500 font-medium transition relative group cursor-pointer bg-transparent border-0"
+              >
                 Wettwissen
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-500 group-hover:w-full transition-all duration-300"></span>
-              </a>
-              <a onClick={() => document.getElementById('tools')?.scrollIntoView({ behavior: 'smooth' })} className="text-gray-300 hover:text-red-500 font-medium transition relative group cursor-pointer">
+              </button>
+              <button 
+                onClick={() => {
+                  const element = document.getElementById('tools');
+                  if (element) element.scrollIntoView({ behavior: 'smooth' });
+                }} 
+                className="text-gray-300 hover:text-red-500 font-medium transition relative group cursor-pointer bg-transparent border-0"
+              >
                 Tools
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-500 group-hover:w-full transition-all duration-300"></span>
-              </a>
-              <Button className="bg-gradient-to-r from-red-600 to-red-800 hover:from-red-700 hover:to-red-900 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300" onClick={() => window.location.href = 'mailto:michael.gierke@web.de?subject=Bad Bets Alert abonnieren&body=Ich möchte über Bad Bets informiert werden.'}>
+              </button>
+              <Button className="bg-gradient-to-r from-red-600 to-red-800 hover:from-red-700 hover:to-red-900 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300" onClick={() => document.getElementById('email-form')?.scrollIntoView({ behavior: 'smooth' })}>
                 <AlertTriangle className="w-4 h-4 mr-2" />
-                Jetzt warnen lassen
+                Gratis PDF laden
               </Button>
             </div>
           </div>
