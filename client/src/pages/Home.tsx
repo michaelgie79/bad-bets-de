@@ -483,7 +483,7 @@ export default function Home() {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
-              <a href="#bad-bet" className="text-gray-300 hover:text-red-500 font-medium transition relative group">
+              <a href="#bad-bets" className="text-gray-300 hover:text-red-500 font-medium transition relative group">
                 Bad Bets des Tages
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-500 group-hover:w-full transition-all duration-300"></span>
               </a>
